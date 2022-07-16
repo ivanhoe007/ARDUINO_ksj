@@ -1,35 +1,25 @@
 void setup() {
-  pinMode(6, OUTPUT);
-  pinMode(5, OUTPUT);
-
+  Serial.begin(9600);
+  
 }
 
 void loop() {
 
-  for(int i = 0; i<255; i++)
+  int lightValue = analogRead(A0);
+  int lightLimit = 200;
+
+
+  if(analogRead(A0)<= lightLimit)
   {
-    analogWrite(9, i);
+    analogWrite(5, 255);
     delay(5)
   }
 
-  delay(1000);
-
-  for(int i = 255; i>0; i--)
+  else
   {
-    analogWrite(9,i);
+    analogWrite(5, 0);
     delay(5)
   }
-
-
-
-  digitalWrite(6, HIGH);
-  delay(500);
-  digitalWrite(5, HIGH);
-  delay(500);
-  digitalWrite(5, LOW);
-  delay(500);
-  digitalWrite(6, LOW);
-  delay(500);
 
 
   
